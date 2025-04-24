@@ -44,8 +44,7 @@ export const useMusicStore = create<MusicStore>((set) => ({
   deleteSong: async (id) => {
     set({ isLoading: true, error: null });
     try {
-      await axiosInstance.delete(`/admin/songs/${id}`);
-
+      await axiosInstance.delete(`/admin/songs/${id}`, { withCredentials: true });
       set((state) => ({
         songs: state.songs.filter((song) => song._id !== id),
       }));
@@ -61,7 +60,7 @@ export const useMusicStore = create<MusicStore>((set) => ({
   deleteAlbum: async (id) => {
     set({ isLoading: true, error: null });
     try {
-      await axiosInstance.delete(`/admin/albums/${id}`);
+      await axiosInstance.delete(`/admin/albums/${id}`, { withCredentials: true });
       set((state) => ({
         albums: state.albums.filter((album) => album._id !== id),
         songs: state.songs.map((song) =>
@@ -81,11 +80,12 @@ export const useMusicStore = create<MusicStore>((set) => ({
   fetchSongs: async () => {
     set({ isLoading: true, error: null });
     try {
-      const response = await axiosInstance.get("/songs");
+      const response = await axiosInstance.get("/songs", { withCredentials: true });
       if (Array.isArray(response.data)) {
         set({ songs: response.data });
       } else {
-        throw new Error("Failed to fetch songs: data is not an array");
+        console.error("Invalid songs data:", response.data);
+        set({ error: "Invalid songs data" });
       }
     } catch (error: any) {
       set({ error: error.message });
@@ -97,7 +97,7 @@ export const useMusicStore = create<MusicStore>((set) => ({
   fetchStats: async () => {
     set({ isLoading: true, error: null });
     try {
-      const response = await axiosInstance.get("/stats");
+      const response = await axiosInstance.get("/stats", { withCredentials: true });
       set({ stats: response.data });
     } catch (error: any) {
       set({ error: error.message });
@@ -109,11 +109,12 @@ export const useMusicStore = create<MusicStore>((set) => ({
   fetchAlbums: async () => {
     set({ isLoading: true, error: null });
     try {
-      const response = await axiosInstance.get("/albums");
+      const response = await axiosInstance.get("/albums", { withCredentials: true });
       if (Array.isArray(response.data)) {
         set({ albums: response.data });
       } else {
-        throw new Error("Failed to fetch albums: data is not an array");
+        console.error("Invalid albums data:", response.data);
+        set({ error: "Invalid albums data" });
       }
     } catch (error: any) {
       set({ error: error.response?.data?.message || error.message });
@@ -125,7 +126,7 @@ export const useMusicStore = create<MusicStore>((set) => ({
   fetchAlbumById: async (id) => {
     set({ isLoading: true, error: null });
     try {
-      const response = await axiosInstance.get(`/albums/${id}`);
+      const response = await axiosInstance.get(`/albums/${id}`, { withCredentials: true });
       set({ currentAlbum: response.data });
     } catch (error: any) {
       set({ error: error.response?.data?.message || error.message });
@@ -137,11 +138,12 @@ export const useMusicStore = create<MusicStore>((set) => ({
   fetchFeaturedSongs: async () => {
     set({ isLoading: true, error: null });
     try {
-      const response = await axiosInstance.get("/songs/featured");
+      const response = await axiosInstance.get("/songs/featured", { withCredentials: true });
       if (Array.isArray(response.data)) {
         set({ featuredSongs: response.data });
       } else {
-        throw new Error("Failed to fetch featured songs: data is not an array");
+        console.error("Invalid featuredSongs data:", response.data);
+        set({ error: "Invalid featured songs data" });
       }
     } catch (error: any) {
       set({ error: error.response?.data?.message || error.message });
@@ -153,11 +155,12 @@ export const useMusicStore = create<MusicStore>((set) => ({
   fetchMadeForYouSongs: async () => {
     set({ isLoading: true, error: null });
     try {
-      const response = await axiosInstance.get("/songs/made-for-you");
+      const response = await axiosInstance.get("/songs/made-for-you", { withCredentials: true });
       if (Array.isArray(response.data)) {
         set({ madeForYouSongs: response.data });
       } else {
-        throw new Error("Failed to fetch made-for-you songs: data is not an array");
+        console.error("Invalid madeForYouSongs data:", response.data);
+        set({ error: "Invalid made-for-you songs data" });
       }
     } catch (error: any) {
       set({ error: error.response?.data?.message || error.message });
@@ -169,11 +172,12 @@ export const useMusicStore = create<MusicStore>((set) => ({
   fetchTrendingSongs: async () => {
     set({ isLoading: true, error: null });
     try {
-      const response = await axiosInstance.get("/songs/trending");
+      const response = await axiosInstance.get("/songs/trending", { withCredentials: true });
       if (Array.isArray(response.data)) {
         set({ trendingSongs: response.data });
       } else {
-        throw new Error("Failed to fetch trending songs: data is not an array");
+        console.error("Invalid trendingSongs data:", response.data);
+        set({ error: "Invalid trending songs data" });
       }
     } catch (error: any) {
       set({ error: error.response?.data?.message || error.message });
