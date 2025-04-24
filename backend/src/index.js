@@ -63,12 +63,12 @@ cron.schedule("0 * * * *", () => {
 	}
 });
 
-app.use("/users", userRoutes);
-app.use("/auth", authRoutes);
-app.use("/admin", adminRoutes);
-app.use("/songs", songRoutes);
-app.use("/albums", albumRoutes);
-app.use("/stats", statRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/admin", adminRoutes);
+app.use("/api/songs", songRoutes);
+app.use("/api/albums", albumRoutes);
+app.use("/api/stats", statRoutes);
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "../frontend/dist")));
