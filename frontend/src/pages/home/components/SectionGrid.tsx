@@ -5,11 +5,17 @@ import PlayButton from "./PlayButton";
 
 type SectionGridProps = {
 	title: string;
-	songs: Song[];
+	songs: Song[] | undefined | null;
 	isLoading: boolean;
 };
+
 const SectionGrid = ({ songs, title, isLoading }: SectionGridProps) => {
 	if (isLoading) return <SectionGridSkeleton />;
+
+	if (!Array.isArray(songs)) {
+		console.error("❌ 'songs' is not an array:", songs);
+		return <div className="text-red-500">Oops! Failed to load songs.</div>;
+	}
 
 	return (
 		<div className='mb-8'>
@@ -31,8 +37,7 @@ const SectionGrid = ({ songs, title, isLoading }: SectionGridProps) => {
 								<img
 									src={song.imageUrl}
 									alt={song.title}
-									className='w-full h-full object-cover transition-transform duration-300 
-									group-hover:scale-105'
+									className='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105'
 								/>
 							</div>
 							<PlayButton song={song} />
@@ -45,4 +50,5 @@ const SectionGrid = ({ songs, title, isLoading }: SectionGridProps) => {
 		</div>
 	);
 };
+
 export default SectionGrid;
