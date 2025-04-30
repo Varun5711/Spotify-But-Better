@@ -32,7 +32,7 @@
 A sophisticated full-stack music streaming platform inspired by Spotify, built with the MERN stack. This application delivers an immersive audio experience with real-time social features, comprehensive analytics, and a powerful admin dashboard for content management.
 
 <div align="center">
-  <img src="./frontend/public/AdminDashboard.png" alt="Application Screenshot" />
+  <img src="./frontend/public/AdminDahboard.png" alt="Application Screenshot" />
 </div>
 
 ## ✨ Features
