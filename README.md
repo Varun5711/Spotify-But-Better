@@ -2,7 +2,7 @@
 
 <div align="center">
   
-  ![Spotify Clone Banner](https://asset.cloudinary.com/duyyorsfx/d88409e2f13612916cba6f2c07a221b6)
+  ![Spotify Clone Banner](./frontend/public/ApplicationFace.png)
 
   <p align="center">
     <a href="#-demo">View Demo</a> •
