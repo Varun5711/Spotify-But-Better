@@ -32,7 +32,7 @@
 A sophisticated full-stack music streaming platform inspired by Spotify, built with the MERN stack. This application delivers an immersive audio experience with real-time social features, comprehensive analytics, and a powerful admin dashboard for content management.
 
 <div align="center">
-  <img src="https://via.placeholder.com/800x450/0a0e12/1DB954?text=Application+Screenshot" alt="Application Screenshot" />
+  <img src="./frontend/public/AdminDashboard.png" alt="Application Screenshot" />
 </div>
 
 ## ✨ Features
@@ -206,7 +206,7 @@ spotify-clone/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/spotify-clone.git
+   git clone https://github.com/Varun5711/Spotify-But-Better
    cd spotify-clone
    ```
 
